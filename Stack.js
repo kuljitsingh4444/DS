@@ -1,57 +1,65 @@
 class TechStack{
-    constructor(){
-        this.items = Array(10).fill(null);
-        this.top = 0;
+    constructor(size){
+        this.size = size
+        this.items = Array(size).fill(null);
+        this.top = -1;
     }
     
     isEmpty(){
-        console.log(this.top === 0)
+        console.log(this.top === -1)
     }
     
     push(newItem){
-        this.items[this.top] = newItem;
+        if(this.top === this.size - 1){
+            console.log("Overflow!")
+            return
+        }
         this.top += 1;
+        this.items[this.top] = newItem;
     }
     
     peek(){
-        console.log(this.items[this.top - 1])
+        console.log(this.items[this.top])
     }
     
     printStack(){
         console.log(this.items)
+        console.log("Top: " + this.top)
     }
     
     pop(){
-        if(this.top !== 0){
-            this.items[this.top - 1] = null
+        if(this.top !== -1){
+            this.items[this.top] = null
             this.top -= 1;
+        } else { 
+            console.log("underflow!")
         }
     }
 }
 
-tStack = new TechStack();
-tStack.push(1)
-tStack.push(10)
-tStack.push(100)
-tStack.peek()
+tStack = new TechStack(4);
 tStack.isEmpty()
 tStack.printStack()
-tStack.pop()
+tStack.push(1)
 tStack.printStack()
-tStack.pop()
-tStack.printStack()
-tStack.push(101)
-tStack.push(102)
-tStack.peek()
-tStack.push(103)
-tStack.printStack()
-tStack.pop()
-tStack.pop()
-tStack.pop()
+tStack.push(2)
 tStack.printStack()
 tStack.peek()
+tStack.push(3)
+tStack.printStack()
+tStack.push(4)
+tStack.printStack()
+tStack.isEmpty()
+tStack.push(5)
+tStack.printStack()
+tStack.push(6)
+tStack.peek()
+tStack.printStack()
+tStack.push(7)
 tStack.pop()
+tStack.printStack()
 tStack.pop()
 tStack.printStack()
+tStack.pop()
 tStack.printStack()
-tStack.printStack()
+tStack.peek()
