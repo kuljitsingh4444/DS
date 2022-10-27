@@ -1,8 +1,8 @@
 class TechQ{
     constructor(size){
         this.size = size
-        this.front = 0;
-        this.rear = 0;
+        this.front = -1;
+        this.rear = -1;
         this.items= Array(size).fill(null)
     }
     
@@ -13,9 +13,9 @@ class TechQ{
     }
     
     enque(newItem){
-        if(this.rear < this.size){
-            this.items[this.rear] = newItem
+        if(this.rear < this.size - 1){
             this.rear += 1;
+            this.items[this.rear] = newItem
         } else {
             console.log("Overflow!")
         }
@@ -25,8 +25,8 @@ class TechQ{
         if(this.front === this.rear){
             console.log("underflow")
         } else {
-            this.items[this.front] = null
             this.front += 1
+            this.items[this.front] = null
         }
     }
     
@@ -35,25 +35,23 @@ class TechQ{
     }
     
     peek(){
-        console.log(this.items[this.front])
+        console.log(this.items[this.front + 1])
     }
 }
 
 let qu = new TechQ(4)
+qu.printQueue()
 qu.enque(10)
 qu.printQueue()
-qu.enque(11)
+qu.enque(20)
 qu.printQueue()
-qu.enque(12)
+qu.enque(30)
 qu.printQueue()
-qu.enque(13)
+qu.enque(40)
 qu.printQueue()
-qu.enque(14)
-qu.printQueue()
-qu.peek()
-qu.isEmpty()
-qu.enque(14)
-qu.enque(14)
+qu.enque(50)
+qu.enque(50)
+qu.enque(50)
 qu.printQueue()
 qu.deque()
 qu.printQueue()
@@ -65,4 +63,5 @@ qu.deque()
 qu.printQueue()
 qu.deque()
 qu.printQueue()
-qu.isEmpty()
+qu.enque(10)
+qu.printQueue()
